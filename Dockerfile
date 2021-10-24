@@ -20,7 +20,10 @@ RUN chmod a+rx /usr/local/bin/waff
     
 WORKDIR "${HOME}"
 
-RUN git clone https://gitlab.com/non-det-alle/ns-3-dev.git
-
 # Switch back to jovyan to avoid accidental container runs as root
 USER ${NB_UID}
+
+RUN git clone https://gitlab.com/non-det-alle/ns-3-dev.git && \
+	waff configure --build-profile=optimized && \
+	waff && \
+	chmod -R g+w ns-3-dev/
