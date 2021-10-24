@@ -1,4 +1,4 @@
-# Docker image with Ns-3 and jupyter/datascience-notebook
+# Docker image with Ns-3 simulator and jupyter/datascience-notebook
 
 Example entry in .ssh/config to be able to open notebooks remotely. We do it with port forwarding as specified in the last line.
 
@@ -21,7 +21,7 @@ docker pull nondetalle/ns3-notebook
 Start the container in the remote machine.
 
 ```
-docker run -ti -v $(pwd):/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes -e NB_UID=$UID -e GRANT_SUDO=yes -u root --network host nondetalle/ns3-notebook
+docker run -ti -v $(pwd):/home/jovyan/work -e JUPYTER_ENABLE_LAB=yes -e NB_UID=$UID -u root --network host nondetalle/ns3-notebook
 ```
 
 From the jupiter terminal or by running `docker exec -ti nondetalle/ns3-notebook start.sh`:
@@ -32,7 +32,7 @@ From the jupiter terminal or by running `docker exec -ti nondetalle/ns3-notebook
 cd ns-3-dev/contrib && \
 git clone REPO
 ```
-* Run `waff configure [OPTIONS] && waff` to build the project.
+* Run `waff` to build the project.
 
 To stop the container.
 

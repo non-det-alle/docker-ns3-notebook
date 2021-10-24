@@ -26,4 +26,4 @@ USER ${NB_UID}
 RUN git clone https://gitlab.com/non-det-alle/ns-3-dev.git && \
 	waff configure --build-profile=optimized && \
 	waff && \
-	chmod -R g+w ns-3-dev/
+	chmod -R g=u ns-3-dev/
