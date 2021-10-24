@@ -1,9 +1,9 @@
-FROM jupyter:datascience-notebook
+FROM jupyter/datascience-notebook
 LABEL maintainer="Alessandro Aimi <alleaimi95@gmail.com>"
 LABEL Description="Docker image for NS-3 Network Simulator and Jupiter Notebooks"
 
 # Fix DL4006
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+#SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 USER root
 
