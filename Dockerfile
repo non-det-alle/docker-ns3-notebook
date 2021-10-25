@@ -9,7 +9,7 @@ USER root
 
 # General dependencies
 RUN apt-get update --yes && \
-  apt-get install --yes --no-install-recommends g++ && \
+  apt-get install --yes --no-install-recommends g++ libboost-all-dev && \
   apt-get clean && rm -rf /var/lib/apt/lists/*
   
 # Configure environment
