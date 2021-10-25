@@ -7,10 +7,12 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 USER root
 
-# General dependencies
-RUN apt-get update --yes && \
-  apt-get install --yes --no-install-recommends g++ libboost-all-dev && \
-  apt-get clean && rm -rf /var/lib/apt/lists/*
+# General dependencies (namely, boost)
+RUN mamba install --quiet --yes \
+    'boost' && \
+    mamba clean --all -f -y && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
   
 # Configure environment
 ENV NS3DIR="${HOME}/ns-3-dev"
@@ -24,4 +26,4 @@ WORKDIR "${HOME}"
 USER ${NB_UID}
 
 RUN git clone https://gitlab.com/non-det-alle/ns-3-dev.git && \
-	chmod -R g=u ns-3-dev/
+	fix-permissions "${HOME}/ns-3-dev"
