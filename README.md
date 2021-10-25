@@ -32,7 +32,7 @@ From the jupiter terminal or by running `docker exec -ti nondetalle/ns3-notebook
 cd ns-3-dev/contrib && \
 git clone REPO
 ```
-* Run `waff` to build the project.
+* Run `waff configure -d optimized && waff` to build the project.
 
 To stop the container.
 
