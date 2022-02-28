@@ -9,7 +9,7 @@ USER root
 
 # General dependencies (namely, boost)
 RUN mamba install --quiet --yes \
-    'boost' && \
+    'boost' 'ortools-cpp' && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
@@ -26,5 +26,6 @@ WORKDIR "${HOME}"
 USER ${NB_UID}
 
 RUN git clone https://gitlab.com/non-det-alle/ns-3-dev.git && \
-  waff configure -d optimized && waff \
+  waff configure -d optimized && \
+  waff &&\
 	fix-permissions "${HOME}/ns-3-dev"
