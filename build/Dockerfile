@@ -29,3 +29,10 @@ RUN git clone https://gitlab.com/non-det-alle/ns-3-dev.git && \
   waff configure -d optimized && \
   waff &&\
 	fix-permissions "${HOME}/ns-3-dev"
+
+# Manually install SciencePlots
+RUN git clone https://github.com/garrettj403/SciencePlots.git && \
+    mkdir ~/.matplotlib/stylelib/ && \
+    cp SciencePlots/styles/*/*.mplstyle ~/.matplotlib/stylelib/ && \
+    rm -r SciencePlots/ && \
+    fix-permissions "${HOME}/.matplotlib/stylelib/"
